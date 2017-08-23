@@ -9,9 +9,14 @@
   <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
+  
 
   <link href="{{asset 'css/style.css'}}" rel="stylesheet" />
   <link href="{{asset 'css/colors-dark.css'}}" rel="stylesheet" />
+  <link href="{{asset 'css/solarized-dark.css'}}" rel="stylesheet" />
+  
+  <script src="{{asset 'js/jquery-3.2.1.min.js'}}"></script>
+
 
   {{ghost_head}}
 
@@ -21,8 +26,8 @@
 
 
 
-  {{#if @blog.cover}}
-    <div id="coverimg" style="background-image: url({{@blog.cover}})"></div>
+  {{#if @blog.cover_image}}
+    <div id="coverimg" style="background-image: url({{@blog.cover_image}})"></div>
   {{/if}}
 
 
@@ -46,8 +51,13 @@
 
       <nav>
         <ul>
-          <li><a href="{{@blog.url}}">Home</a></li>
+          <li><a href="{{@blog.url}}">Archive</a></li>
+          <li><a href="{{@blog.url}}/tag/ctfwriteups/">CTF Writeups</a></li>
+          <li><a href="{{@blog.url}}/tag/technicalwriteups/">Other Technical Writeups</a></li>
+          <li><a href="{{@blog.url}}/tag/reviews/">Reviews</a></li>
+          <li><a href="{{@blog.url}}/tag/bicycles/">Bikes</a></li>
           <li><a href="http://twitter.com/spirotot">Twitter</a></li>
+          <li><a href="{{@blog.url}}/about">About</a></li>
           <li><a href="{{@blog.url}}/rss/">RSS Feed</a></li>
         </ul>
       </nav>
@@ -55,7 +65,7 @@
       {{#post}}
       {{#if author}}
         <div class="bio">
-          <img class="avatar" src="{{author.image}}" />
+          <img class="avatar" src="{{author.profile_image}}" />
           <h3>{{author.name}}</h3>
           <p>{{author.bio}}</p>
         </div>
@@ -84,8 +94,10 @@
 
   {{ghost_foot}}
 
-  <script src="{{asset 'js/jquery.mobilemenu.min.js'}}"></script>
   <script src="{{asset 'js/prism.js'}}"></script>
+  <script src="{{asset 'js/jquery.mobilemenu.min.js'}}"></script>
+
+
   <script>
     $(document).ready(function(){
       $('#sidebar nav ul').mobileMenu({'topOptionText': 'Menu', 'prependTo': '#sidebar nav'});
